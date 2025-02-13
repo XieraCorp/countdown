@@ -1,0 +1,39 @@
+<div id="countdown">
+  <h2>Save The Date:</h2>
+  <div class="countdown-box">
+    <span id="days">00</span>
+    <span class="label">Hari</span>
+  </div>
+  <div class="countdown-box">
+    <span id="hours">00</span>
+    <span class="label">Jam</span>
+  </div>
+  <div class="countdown-box">
+    <span id="minutes">00</span>
+    <span class="label">Menit</span>
+  </div>
+  <div class="countdown-box">
+    <span id="seconds">00</span>
+    <span class="label">Detik</span>
+  </div>
+</div>
+#countdown { font-family: Arial, sans-serif; text-align: center;
+background-color: #f8f9fa; padding: 10px; border-radius: 10px; width: 320px;
+margin: auto; } .countdown-box { display: inline-block; background-color:
+#007bff; color: white; font-size: 24px; font-weight: bold; padding: 10px;
+margin: 5px; border-radius: 5px; min-width: 30px; text-align: center; } .label {
+display: block; font-size: 14px; font-weight: normal; color: #333; margin-top:
+5px; } function updateCountdown() { const weddingDate = new
+Date("2025-05-10T00:00:00").getTime(); const now = new Date().getTime(); const
+timeLeft = weddingDate - now; if (timeLeft > 0) {
+document.getElementById("days").innerText = Math.floor( timeLeft / (1000 * 60 *
+60 * 24) ); document.getElementById("hours").innerText = String(
+Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)) ).padStart(2,
+"0"); document.getElementById("minutes").innerText = String(
+Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60)) ).padStart(2, "0");
+document.getElementById("seconds").innerText = String( Math.floor((timeLeft %
+(1000 * 60)) / 1000) ).padStart(2, "0"); } else {
+document.getElementById("countdown").innerHTML = "
+<h2>Hari ini adalah hari pernikahan!</h2>
+"; clearInterval(interval); } } const interval = setInterval(updateCountdown,
+1000); updateCountdown();
